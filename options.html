@@ -1,0 +1,29 @@
+<!-- options.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extension Settings</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .container { max-width: 400px; margin: 0 auto; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; }
+        button { padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Settings</h2>
+        <label for="apiKey">API Key:</label>
+        <input type="text" id="apiKey" placeholder="Enter your API key here" />
+
+        <label for="prompt">Prompt:</label>
+        <textarea id="prompt" rows="10" placeholder="Enter your prompt here"></textarea>
+
+        <a href="https://platform.openai.com/api-keys">Get GPT API key from OpenAI's website</a>
+
+        <button id="save">Save</button>
+        <p id="status" style="color: green;"></p>
+    </div>
+    <script src="options.js"></script>
+</body>
+</html>
