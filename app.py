@@ -18,9 +18,8 @@ def fetch_news():
     if not url:
         return jsonify({'error': 'URL not provided'}), 400
 
-    # Fetch news article using Newspaper3k
     try:
-        article = Article(url)
+        article = Article(url) # fetch news article using Newspaper3k
         article.download()
         article.parse()
 
@@ -29,23 +28,29 @@ def fetch_news():
         author = article.authors
         content = article.text
 
-        # Split the content into sentences and format each on a new line
-        sentences = re.split(r'(?<=[.!?])\s+', content)
+        
+        sentences = re.split(r'(?<=[.!?])\s+', content) # split the content into sentences and format each on a new line
         #print(len(sentences))
         total_sentence = len(sentences)
         #formatted_content = '\n'.join(sentences)
 
-        # Send sentences to server.py for inference
+        # send sentences to server.py
         response = requests.post(INFERENCE_SERVER_URL, json={'sentences': sentences})
         #print("Response Status Code:", response.status_code)
         #print("Response Content:", response.text)
         if response.status_code != 200:
             return jsonify({'error': 'Failed to get inference results'}), 500
 
-        # Get the probabilities from the response
+        # get the probability
         inference_results = response.json()
         probabilities = inference_results.get('probabilities', [])
         #print(probabilities)
+        for i, sentence in enumerate(sentences):
+            # Find text inside double quotes
+            double_quote = re.findall(r'"([^"]*)"', sentence)
+            # Check if any quote has more than two words
+            if any(len(quote.split()) > 2 for quote in double_quote):
+                probabilities[i] = 0.0  # Set probability to zero
         
         #get count of propaganda statements:
         non_prop = sum(1 for x in probabilities if x < 0.50)
@@ -68,7 +73,7 @@ def fetch_news():
         })
     except Exception as e:
         print("Error occurred:", str(e))
-        traceback.print_exc()  # Print the full traceback for more details
+        traceback.print_exc() 
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':

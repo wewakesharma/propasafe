@@ -3,14 +3,34 @@
   <head>
     <title>Propaganda Detection</title>
     <style>
-      body { min-width: 200px; padding: 10px; }
-      button { margin: 5px; }
+      body { 
+        min-width: 300px; 
+        padding: 10px; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+        height: 100vh;
+        margin: 0;
+      }
+      h2 {
+        text-align: center; 
+      }
+      button {
+        margin: 20px; 
+        font-size: 18px;
+        padding: 15px 30px; 
+        width: 250px; 
+        height: 60px; 
+        border-radius: 10px; 
+      }
     </style>
   </head>
   <body>
-    <h2>PropaSafe: Propaganda Detector for News Articles</h2>
+    <h2>PropaSafe: Glance Screen</h2>
     <div id="messageContainer"></div>
     <button id="myButton" disabled>Generating Detailed Report, Please Wait!</button>
+    <a href="">About Propasafe</a>
     <!--<a href="options.html" target="_blank">Open Settings</a>-->
     <script src="prop.js"></script>
   </body>

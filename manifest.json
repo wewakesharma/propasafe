@@ -12,7 +12,8 @@
     }
   },
   "permissions": ["activeTab",
-    "tabs"],
+    "tabs", 
+    "scripting"],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
