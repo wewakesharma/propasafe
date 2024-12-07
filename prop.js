@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
   //setTimeout(enableButton, 3000);
 });
 
+
 function fetchNewsContent(url) {
   return fetch('http://127.0.0.1:5000/fetch_news', {
     method: 'POST',
@@ -59,16 +60,56 @@ function enableButton() {
 
   const message = document.createElement('p');
 
+  const score = readabilityScore(total_sentence, count_mild, count_severe);
+  //console.log(`Readability Score: ${score}`);
+
   message.innerHTML = `
-    <span style="color: darkorange; font-size: 18px;">Mild: ${count_mild}</span> <br>
-    <span style="color: red; font-size: 18px;">Severe: <b>${count_severe}</b></span> <br>
+    <span style="color: red; font-size: 18px;">Mild: ${count_mild}</span> <br>
+    <span style="color: darkred; font-size: 18px;">Severe: <b>${count_severe}</b></span> <br>
     <span style="font-size: 18px;">Non Propaganda: ${non_prop}</span> <br>
-    <span style="font-size: 18px;">Total Sentence: ${total_sentence}</span>
+    <span style="font-size: 18px;">Total Sentence: ${total_sentence}</span> <br><br><br>
+    <span style="font-size: 25px; font-weight: bold;">Readability Score: ${score}</span>
   `;
 
+  const body = document.querySelector('body');
+  if (score === 1 || score === 2) {
+    body.style.backgroundColor = 'lightcoral';
+  } else if (score === 3) {
+    body.style.backgroundColor = 'lightorange';
+  } else if (score === 4) {
+    body.style.backgroundColor = 'gold';
+  } else if (score === 5) {
+    body.style.backgroundColor = 'lightgreen';
+  }
+  
   // append the message to the container
   const messageContainer = document.getElementById('messageContainer');
   messageContainer.appendChild(message);
+}
+
+//readability scoring
+function readabilityScore(totalInstances, mildInstances, severeInstances) {
+  // Handle edge case of zero instances
+  if (totalInstances === 0) {
+    return 5; // Default to the best score for articles with no content
+  }
+
+  // Calculate percentages
+  const mildPercentage = (mildInstances / totalInstances) * 100;
+  const severePercentage = (severeInstances / totalInstances) * 100;
+
+  // scoring
+  if (severePercentage > 25 || mildPercentage > 75) {
+    return 1; //worse
+  } else if (severePercentage > 15 || mildPercentage > 50) {
+    return 2; //poor
+  } else if (severePercentage > 10 || mildPercentage > 35) {
+    return 3; //average
+  } else if (severePercentage > 5 || mildPercentage > 25) {
+    return 4; //good
+  } else {
+    return 5; //best
+  }
 }
 
 //open news data in new tab
