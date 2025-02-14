@@ -14,6 +14,22 @@ The current tool is a sentence level classification tool that classifies each se
 * [Technical Details](#Technical-Details)
 * [Scoring System](#Scoring-System)
 
+## Screenshots of Propasafe
+
+1) News outlet 1
+
+![alt text](https://github.com/wewakesharma/propasafe/blob/master/screenshots/a.png "Logo Title Text 1")
+
+Detailed analysis by Propasafe for News outlet 1
+![alt text](https://github.com/wewakesharma/propasafe/blob/master/screenshots/a_details.png "Logo Title Text 1")
+
+2) News outlet 2
+![alt text](https://github.com/wewakesharma/propasafe/blob/master/screenshots/b.png "Logo Title Text 1")
+
+Detailed analysis by Propasafe for News outlet 2:
+
+![alt text](https://github.com/wewakesharma/propasafe/blob/master/screenshots/b_details.png "Logo Title Text 1")
+
 ## Getting Started:
 
 1) Install the requirements in requirements.txt file
