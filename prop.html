@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>Propaganda Detection</title>
     <style>
       body { 
@@ -17,23 +17,53 @@
         text-align: center; 
       }
       button {
-        margin: 20px; 
-        font-size: 18px;
-        padding: 15px 30px; 
-        width: 250px; 
-        height: 60px; 
-        border-radius: 10px; 
+        margin: 10px; 
+        font-size: 16px;
+        padding: 10px 20px; 
+        width: 200px; 
+        height: 50px; 
+        border-radius: 8px; 
+      }
+      /* Container for Chart */
+      .chart-container {
+        width: 200px; /* Smaller chart size */
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px; /* Reduce space between chart and legend */
+      }
+      canvas {
+        max-width: 100%;
+        max-height: 100%;
+      }
+      /* Legend styling */
+      .chart-legend {
+        margin-top: -10px;
+        font-size: 14px;
       }
     </style>
-  </head>
-  <body>
+    
+    <!-- Load Chart.js locally -->
+    <script src="./node_modules/chart.js/dist/chart.umd.js"></script>
+</head>
+<body>
     <img src="icon2.png" width="70px"><h1>Propasafe</h1>
-    <hr style="height: 15px; background-color: darkblue; border: none;">
+    <hr style="height: 10px; background-color: darkblue; border: none;">
     <h2 align="left"><u>Glance Screen</u></h2>
+
     <div id="messageContainer"></div>
+
+    <!-- Chart Container -->
+    <div class="chart-container">
+      <canvas id="pieChart"></canvas>
+    </div>
+    <div class="chart-legend" id="chartLegend"></div>
+
     <button id="myButton" disabled>Generating Detailed Report, Please Wait!</button>
-    <a href="">About Propasafe</a>
-    <!--<a href="options.html" target="_blank">Open Settings</a>-->
+    <a href="https://github.com/wewakesharma/propasafe">About Propasafe</a>
+    
+    <!-- Load the JavaScript file -->
     <script src="prop.js"></script>
-  </body>
+</body>
 </html>
