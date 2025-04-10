@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "My First Extension",
+  "name": "Propasafe",
   "version": "1.0",
-  "description": "A simple browser extension.",
+  "description": "A free, transparent, privacy focused BERT-based tool for propaganda detection",
   "action": {
     "default_popup": "prop.html",
     "default_icon": {
