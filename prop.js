@@ -146,5 +146,58 @@ function readabilityScore(totalInstances, mildInstances, severeInstances) {
   }
 }
 
+//open news data in new tab
+function openNewsContentInNewTab() {
+  if (!window.newsData) {
+    console.error("No news content available to display");
+    return;
+  }
+
+  const newsData = window.newsData;
+  const sentences = newsData.body.split(/(?<=[.!?])\s+/);
+  const probabilities = newsData.inference.probabilities;
+
+  // Debugging: Check if probabilities have values
+  if (!probabilities || probabilities.length === 0) {
+    console.error("Probabilities array is empty or not found");
+    alert("Probabilities array is empty or not found");
+    return;
+  }
+
+  //=======Colored section========
+  //const coloredSentences = sentences.map(sentence => `<p>${sentence}</p>`).join('');
+
+  const coloredSentences = sentences.map((sentence, index) => {
+    const probability = probabilities[index] || 0;
+    let color = '';
+    if (probability > 0.75) {
+      color = 'background-color: red; color: white;';
+    } else if (probability > 0.5) {
+      color = 'background-color: yellow;';
+    }
+    return `<p style="${color}">${sentence}</p>`;
+  }).join('');
+
+  const newTab = window.open('', '_blank');
+  if (newTab) {
+    newTab.document.write(`
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>${newsData.title}</title>
+      </head>
+      <body>
+        <h1>${newsData.title}</h1>
+        <p><strong>Author:</strong> ${newsData.author}</p>
+        <div>${coloredSentences}</div>
+      </body>
+      </html>
+    `);
+    newTab.document.close();
+  } else {
+    console.error('Failed to open a new tab');
+  }
+}
+
 // Attach event to button
 document.getElementById('myButton').addEventListener('click', openNewsContentInNewTab);
