@@ -36,9 +36,7 @@ Detailed analysis by Propasafe for News outlet 2:
 
 2) Download the fine-tuned BERT model https://figshare.com/s/d9420062b6dd5e7ec618?file=51093947 
 OR 
-You can choose your model and name it best_model.keras(or use .h5 extension)
-
-save it in same folder as cloned repository.
+You can choose your model and name it best_model.keras(or use .h5 extension). Save it in same folder as cloned repository.
 
 3) Navigate to the folder and create a virtual environment and activate it. Read this document for help https://docs.python.org/3/library/venv.html
 
@@ -47,6 +45,7 @@ save it in same folder as cloned repository.
 ```
 pip install -r requirements.txt
 ```
+Note: While installing the requirements, make sure all the packages are installed. If not, download the package from vendor's website. 
 
 5) Load the extension on browser. Here's the steps, specific to Chrome. 
 Open chrome. Go to Extension>Manage Extension. 
@@ -68,7 +67,8 @@ python app.py
 NOTE: Wait until both the terminal(running server.py and app.py) shows the pin, DO not open the browser.
 
 Once done, Open the browser, open a news article(with text) and click on the propasafe extension on top right.
-Enjoy open, safe and mindful news consumption!!
+
+### Enjoy open, safe and mindful news consumption!!
 
 ## Definition:
 
