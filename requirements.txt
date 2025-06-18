@@ -68,7 +68,7 @@ tensorflow-estimator==2.15.0
 tensorflow-hub==0.15.0
 tensorflow-io-gcs-filesystem==0.37.1
 tensorflow-macos==2.15.0
-tensorflow-text @ file:///Users/vsharma/Desktop/test_model/tensorflow_text-2.15.0-cp39-cp39-macosx_11_0_arm64.whl
+tensorflow-text==2.15.0
 termcolor==2.4.0
 tf-keras==2.15.0
 tinysegmenter==0.3
