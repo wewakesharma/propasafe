@@ -47,18 +47,24 @@ pip install -r requirements.txt
 ```
 Note: While installing the requirements, make sure all the packages are installed. If not, download the package from vendor's website. 
 
-5) Load the extension on browser. Here's the steps, specific to Chrome. 
+5) In order to render the pie chart, run the following command(make sure to install node.js/npm)
+
+```
+npm install @kurkle/color chart.js
+```
+
+6) Load the extension on browser. Here's the steps, specific to Chrome. 
 Open chrome. Go to Extension>Manage Extension. 
 Click on Load Unpacked and select the cloned folder, click Select.
 Make sure it is enabled.
 
-6) Run the classification module file:
+7) Run the classification module file:
 
 ```
 python server.py
 ```
 
-7) Run the text processing file:
+8) Run the text processing file:
 
 ```
 python app.py
